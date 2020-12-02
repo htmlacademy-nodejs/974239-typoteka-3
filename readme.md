@@ -1,7 +1,7 @@
 # Личный проект «Типотека» [![Build status][travis-image]][travis-url]
 
 * Студент: [Александр Гриневич](https://up.htmlacademy.ru/nodejs/3/user/974239).
-* Наставник: `Неизвестно`.
+* Наставник: [Константин Серебрянский](https://htmlacademy.ru/profile/id185658).
 
 ---
 
