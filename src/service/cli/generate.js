@@ -73,7 +73,7 @@ const generateOffers = ({count, titles, anounces, categories}) =>
 
 module.exports = {
   name: `--generate`,
-  async run(count) {
+  run(count) {
     if (count > MAX_ELEMENTS_COUNT) {
       console.error(`Не больше ${MAX_ELEMENTS_COUNT} публикаций`);
       process.exit(ExitCode.FAIL);
