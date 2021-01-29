@@ -1,10 +1,11 @@
 'use strict';
 
+const chalk = require(`chalk`);
 const packageJSON = require(`../../../package.json`);
 
 module.exports = {
   name: `--version`,
   run() {
-    console.info(packageJSON.version);
+    console.log(chalk.blue(packageJSON.version));
   }
 };
