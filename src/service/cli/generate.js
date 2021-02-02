@@ -1,6 +1,7 @@
 "use strict";
 
-const fs = require(`fs`);
+const fs = require(`fs`).promises;
+const chalk = require(`chalk`);
 const {getRandomInt, shuffle, subtractMonth, formatDate} = require(`../../utils`);
 const {ExitCode} = require(`../../constants`);
 
@@ -73,21 +74,21 @@ const generateOffers = ({count, titles, anounces, categories}) =>
 
 module.exports = {
   name: `--generate`,
-  run(count) {
+  async run(count) {
     if (count > MAX_ELEMENTS_COUNT) {
-      console.error(`Не больше ${MAX_ELEMENTS_COUNT} публикаций`);
+      console.log(chalk.red(`Не больше ${MAX_ELEMENTS_COUNT} публикаций`));
       process.exit(ExitCode.FAIL);
     }
     count = Number.parseInt(count, 10) || DEFAULT_COUNT;
 
     const content = JSON.stringify(generateOffers({count, titles: TITLES, anounces: ANOUNCES, categories: CATEGORIES}));
-    fs.writeFile(FILE_NAME, content, (err) => {
-      if (err) {
-        console.error(`Can't write data to file...`);
-        process.exit(ExitCode.FAIL);
-      }
-      console.info(`Operation success. File created.`);
+    try {
+      await fs.writeFile(FILE_NAME, content);
+      console.log(chalk.green(`Operation success. File created.`));
       process.exit(ExitCode.SUCCESS);
-    });
+    } catch (err) {
+      console.log(chalk.red(`Can't write data to file...`));
+      process.exit(ExitCode.FAIL);
+    }
   },
 };
