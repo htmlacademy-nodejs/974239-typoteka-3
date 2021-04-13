@@ -8,7 +8,7 @@ html(lang='ru')
     div(class=isColor ? "wrapper-color" : "wrapper" class=wrapperClass)
       block header
       block content
-      if shouldShowFooter
+      if (shouldShowFooter || shouldShowFooter === undefined)
         include ../partials/footer
     
     if (shouldShowVendorScript || shouldShowVendorScript === undefined)
