@@ -1,0 +1,17 @@
+block variables
+
+doctype html
+html(lang='ru')
+  head
+    include ../partials/head
+  body(style=bodyStyle)
+    div(class=isColor ? "wrapper-color" : "wrapper" class=wrapperClass)
+      block header
+      block content
+      if (shouldShowFooter || shouldShowFooter === undefined)
+        include ../partials/footer
+    
+    if (shouldShowVendorScript || shouldShowVendorScript === undefined)
+      script(src='/js/vendor.js')
+    if (shouldShowMainScript || shouldShowMainScript === undefined)
+      script(src='/js/main.js')
