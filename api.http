@@ -15,7 +15,7 @@ GET http://127.0.0.1:3000/api/articles  HTTP/1.1
 
 # Публикация
 
-GET http://127.0.0.1:3000/api/articles/9SwdjM  HTTP/1.1
+GET http://127.0.0.1:3000/api/articles/YIkbZd  HTTP/1.1
 
 ###
 
@@ -79,3 +79,10 @@ Content-Type: application/json
 
 # Поиск
 GET http://127.0.0.1:3000/api/search?query=Что такое HTTP/1.1
+
+# comments
+
+###
+
+# Список всех комментариев
+GET http://127.0.0.1:3000/api/comments HTTP/1.1

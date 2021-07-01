@@ -28,14 +28,27 @@ const getStringsArrayFromFile = async (fileName) => {
 const now = new Date().valueOf();
 const threeMonthAgo = subtractMonth(now, 3);
 
+const getPicture = () => {
+  const pictures = [`forest`, `sea`, `skyscraper`];
+  const picture = pictures[getRandomInt(0, pictures.length + 1)];
+  return (
+    picture ? {
+      orig: `${picture}@2x.jpg`,
+      big: `${picture}@2x.jpg`,
+      small: `${picture}@1x.jpg`,
+    } : null
+  );
+};
+
 const generateArticles = ({count, titles, anounces, categories, comments}) =>
   new Array(count).fill({}).map(() => ({
     id: nanoid(NANO_ID_LENGTH),
     title: titles[getRandomInt(0, titles.length - 1)],
+    picture: getPicture(),
     createdDate: formatDate(getRandomInt(threeMonthAgo, now)),
     announce: shuffle(anounces).slice(0, getRandomInt(1, 5)).join(` `),
     fullText: shuffle(anounces).slice(0, getRandomInt(1, 5)).join(` `),
-    сategory: shuffle(categories).slice(0, getRandomInt(1, categories.length)),
+    сategory: shuffle(categories).slice(0, getRandomInt(1, 4)),
     comments: new Array(getRandomInt(0, 6)).fill({}).map(() => ({
       id: nanoid(NANO_ID_LENGTH),
       text: comments[getRandomInt(0, comments.length - 1)]
